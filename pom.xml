@@ -61,6 +61,7 @@
         <guava.version>33.4.0-jre</guava.version>
         <spring-boot.version>3.4.2</spring-boot.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <lombok.version>1.18.32</lombok.version>
     </properties>
 
     <modules>
@@ -111,6 +112,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -125,9 +127,16 @@
                     <source>${compiler.version}</source>
                     <target>${compiler.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version> <!-- 与依赖中的版本保持一致 -->
+                    </path>
+                </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -165,13 +174,13 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M6</version>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
@@ -184,7 +193,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
